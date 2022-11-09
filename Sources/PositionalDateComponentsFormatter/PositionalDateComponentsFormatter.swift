@@ -99,11 +99,13 @@ public final class PositionalDateComponentsFormatter: Formatter {
   
   public override func string(for obj: Any?) -> String? {
     if let timeInterval = obj as? TimeInterval {
-      return string(for: timeInterval)
+      return string(from: timeInterval)
     } else if let dateComponents = obj as? DateComponents {
       return string(from: dateComponents)
     } else if let date = obj as? Date {
       return string(from: date)
+    } else if let measurement = obj as? Measurement<UnitDuration> {
+      return string(from: measurement)
     }
     
     return nil
